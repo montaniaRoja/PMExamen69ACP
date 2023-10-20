@@ -23,7 +23,7 @@ public class Transacciones
     // Consultas de Base de datos
     //ddl
     public static final String CreateTablePersonas = "CREATE TABLE personas "+
-            "( id INTEGER PRIMARY KEY AUTOINCREMENT, nombres TEXT, telefono TEXT, notas TEXT)";
+            "( id INTEGER PRIMARY KEY AUTOINCREMENT, nombres TEXT, telefono TEXT, notas TEXT, pais TEXT)";
 
     public static final String DropTablePersonas  = "DROP TABLE IF EXISTS personas";
 

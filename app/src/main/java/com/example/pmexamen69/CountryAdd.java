@@ -3,6 +3,7 @@ package com.example.pmexamen69;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +46,14 @@ public class CountryAdd extends AppCompatActivity {
             Long Result = db.insert(Transacciones.Tabla2, Transacciones.id, valores);
 
             Toast.makeText(this, getString(R.string.Respuesta), Toast.LENGTH_SHORT).show();
+
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("country_added", true);
+            setResult(RESULT_OK, resultIntent);
+            finish();
+
             db.close();
+
         }
         catch (Exception exception)
         {

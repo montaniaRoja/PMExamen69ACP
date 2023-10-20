@@ -2,4 +2,6 @@
     <string name="app_name">PMExamen69</string>
     <string name="Respuesta">Registro ingreso con exito</string>
     <string name="ErrorResp">Error no se pudo registrar</string>
+    <string name="ActualizaMsg">Spiiner actualizado</string>
+    <string name="NoActualizaMsg">Spiiner no actualizado</string>
 </resources>
