@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PMExamen69</string>
+    <string name="Respuesta">Registro ingreso con exito</string>
+    <string name="ErrorResp">Error no se pudo registrar</string>
+</resources>
