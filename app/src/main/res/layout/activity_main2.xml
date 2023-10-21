@@ -13,10 +13,12 @@
         android:layout_height="331dp"
         android:layout_marginTop="100dp"
         android:background="#634D4D"
-        android:backgroundTint="#634D4D"
+        android:backgroundTint="#E39393"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:choiceMode="multipleChoice"/>
 
     <Button
         android:id="@+id/btnCompartir"

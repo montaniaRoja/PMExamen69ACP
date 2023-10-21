@@ -16,6 +16,7 @@ public class Transacciones
     public static final String telefono = "telefono" ;
     public static final String notas = "notas";
 
+    public static final String DeleteContact = "DELETE FROM " + Transacciones.Tabla1 + " WHERE " + Transacciones.id + " = ?";
 
     public static final String id_pais = "id_pais";
     public static final String pais = "pais";
