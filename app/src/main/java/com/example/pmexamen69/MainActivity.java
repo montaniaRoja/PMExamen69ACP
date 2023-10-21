@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -26,6 +27,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -118,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             tomarFoto();
         }
     }
-    public void onReQuestPermissionsResult(int requestCode,String[]permissions,int[]grantResults){
+    public void onRequestPermissionsResult(int requestCode,String[]permissions,int[]grantResults){
         super.onRequestPermissionsResult(requestCode,permissions,grantResults);
 
         if(requestCode==101){
@@ -146,15 +150,18 @@ public class MainActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
-            // Aquí puedes hacer algo con la imagen capturada, como mostrarla en un ImageView
+
             imageView.setImageBitmap(imageBitmap);
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             imagenEnBytes = stream.toByteArray();
+
+            saveImageToFile(imagenEnBytes);
         }
 
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
+                Toast.makeText(this, getString(R.string.Respuesta), Toast.LENGTH_SHORT).show();
                 boolean countryAdded = data.getBooleanExtra("country_added", false);
                 if (countryAdded) {
 
@@ -163,11 +170,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void saveImageToFile(byte[] imageData) {
+        try {
+            String fileName = "image.png"; // Nombre del archivo de imagen
+            FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
+            fos.write(imageData);
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void AddContact() {
         String nombre = nombres.getText().toString().trim();
         String numeroTelefono = telefono.getText().toString().trim();
         String comentario = notas.getText().toString().trim();
-
+        byte[] imagenEnBytes = readImageFromFile();
 
         if (nombre.isEmpty() || numeroTelefono.isEmpty() || comentario.isEmpty()) {
             if(nombre.isEmpty()){
@@ -232,6 +251,24 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, getString(R.string.ErrorResp), Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private byte[] readImageFromFile() {
+        try {
+            String fileName = "image.png"; // Nombre del archivo de imagen
+            FileInputStream fis = openFileInput(fileName);
+            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+            int nRead;
+            byte[] data = new byte[16384];
+            while ((nRead = fis.read(data, 0, data.length)) != -1) {
+                buffer.write(data, 0, nRead);
+            }
+            buffer.flush();
+            return buffer.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private void GetPaises() {

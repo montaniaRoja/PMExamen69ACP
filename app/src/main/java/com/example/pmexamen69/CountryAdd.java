@@ -45,7 +45,7 @@ public class CountryAdd extends AppCompatActivity {
             valores.put(Transacciones.pais, pais.getText().toString());
             Long Result = db.insert(Transacciones.Tabla2, Transacciones.id, valores);
 
-            Toast.makeText(this, getString(R.string.Respuesta), Toast.LENGTH_SHORT).show();
+
 
             Intent resultIntent = new Intent();
             resultIntent.putExtra("country_added", true);

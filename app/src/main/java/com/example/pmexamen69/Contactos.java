@@ -51,6 +51,14 @@ public class Contactos {
         return telefono;
     }
 
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
