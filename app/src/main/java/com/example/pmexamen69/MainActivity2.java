@@ -129,12 +129,15 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Obtiene el número de teléfono de selectedContact
-                String[] parts = selectedContact.split("-");
-                String telefono = parts[1].trim();
-
-                // Inicia la llamada
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + telefono));
-                startActivity(intent);
+                String[] parts = selectedContact.split("\\*\\*");  // Usamos "\\*\\*" como separador
+                if (parts.length >= 2) {
+                    String telefono = parts[1].trim();
+                    // Inicia la llamada
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + telefono));
+                    startActivity(intent);
+                } else {
+                    // Aquí puedes manejar un error si el formato de selectedContact no es el esperado
+                }
             }
         });
 

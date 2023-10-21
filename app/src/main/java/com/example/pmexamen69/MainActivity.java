@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Class<?> actividad = null;
-                if (view.getId() == R.id.btnCountry) {
-                    actividad = CountryAdd.class;
-                }
-                else if (view.getId() == R.id.btnList) {
+                //if (view.getId() == R.id.btnCountry) {
+                  //  actividad = CountryAdd.class;
+                //}
+                if (view.getId() == R.id.btnList) {
                     actividad = MainActivity2.class;
                 }
 
@@ -69,9 +69,22 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
+
         };
+
+        btnCountry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Código para abrir la actividad CountryAdd
+                int requestCode = 1;
+                Intent intent = new Intent(MainActivity.this, CountryAdd.class);
+                startActivityForResult(intent, requestCode);
+            }
+        });
+
+
         btnList.setOnClickListener(butonclick);
-        btnCountry.setOnClickListener(butonclick);
+        //btnCountry.setOnClickListener(butonclick);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {AddContact();
@@ -80,6 +93,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                boolean countryAdded = data.getBooleanExtra("country_added", false);
+                if (countryAdded) {
+                    // Actualiza el Spinner o realiza cualquier otra acción necesaria
+                    GetPaises();
+                }
+            }
+        }
+    }
     private void AddContact() {
         String nombre = nombres.getText().toString().trim();
         String numeroTelefono = telefono.getText().toString().trim();
