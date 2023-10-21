@@ -167,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
 
         FillCombo();
 
-
     }
 
     private void FillCombo() {
@@ -190,8 +189,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),actividad);
         startActivity(intent);
     }
-
-
-
 
 }

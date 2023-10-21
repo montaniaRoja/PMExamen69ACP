@@ -67,12 +67,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="#FAFAFA" />
-
     <Button
         android:id="@+id/btnSave"
         android:layout_width="0dp"
@@ -80,10 +74,10 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
-        android:background="#A6B6D5"
-        android:backgroundTint="#D5A6A6"
-        android:text="Save"
-        app:iconTint="#D5A6A6"
+        android:background="#E39393"
+        android:backgroundTint="#E39393"
+        android:text="Guardar"
+        app:iconTint="#E39393"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtComment" />
@@ -97,7 +91,7 @@
         android:layout_marginEnd="40dp"
         android:background="#A6B6D5"
         android:backgroundTint="#D5A6A6"
-        android:text="Saved Contacts"
+        android:text="Lista de Contactos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSave" />
@@ -147,13 +141,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="#673AB7"
-        android:textColor="#FFFEFE" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -167,11 +154,12 @@
 
     <Button
         android:id="@+id/btnCountry"
-        android:layout_width="75dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginBottom="5dp"
-        android:text="+"
+        android:background="#E39393"
+        android:text="+ Pais"
         app:layout_constraintBottom_toTopOf="@+id/countrySelect"
         app:layout_constraintEnd_toEndOf="@+id/countrySelect"
         app:layout_constraintStart_toEndOf="@+id/textView2" />

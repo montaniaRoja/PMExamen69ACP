@@ -176,8 +176,8 @@ public class MainActivity2 extends AppCompatActivity {
     private void FillList() {
         for (int i = 0; i < listContactos.size(); i++) {
             arregloContactos.add(listContactos.get(i).getId() + "-" +
-                    listContactos.get(i).getNombres() + " " +
-                    listContactos.get(i).getTelefono());
+                    listContactos.get(i).getNombres() + "**" +
+                    listContactos.get(i).getTelefono()+"**"+listContactos.get(i).getPais());
 
         }
 
