@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     Spinner comboPaises;
     ArrayList<Paises> listPaises;
     ArrayList<String> ArregloPaises;
+    ImageView imageView;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         btnCountry=(Button) findViewById(R.id.btnCountry);
         btnSave=(Button) findViewById(R.id.btnSave);
         btnList=(Button) findViewById(R.id.btnList);
+        //imageView=findViewById(R.id.imageView);
+        //imageView.setImageResource(R.drawable.imagen);
 
         conexion =  new SQLiteConexion(this, Transacciones.namedb, null, 1);
         GetPaises();
@@ -53,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 if (view.getId() == R.id.btnCountry) {
                     actividad = CountryAdd.class;
                 }
-
+                else if (view.getId() == R.id.btnList) {
+                    actividad = MainActivity2.class;
+                }
 
                 if(actividad != null)
                 {
@@ -62,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+        btnList.setOnClickListener(butonclick);
         btnCountry.setOnClickListener(butonclick);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             try {
+                String paisSeleccionado = comboPaises.getSelectedItem().toString();
                 SQLiteConexion conexion = new SQLiteConexion(this, Transacciones.namedb, null, 1);
                 SQLiteDatabase db = conexion.getWritableDatabase();
 
@@ -122,17 +132,17 @@ public class MainActivity extends AppCompatActivity {
                 valores.put(Transacciones.nombres, nombre);
                 valores.put(Transacciones.telefono, numeroTelefono);
                 valores.put(Transacciones.notas, comentario);
-                String paisSeleccionado = comboPaises.getSelectedItem().toString();
                 valores.put(Transacciones.pais, paisSeleccionado);
 
                 Long Result = db.insert(Transacciones.Tabla1, Transacciones.id, valores);
 
                 Toast.makeText(this, getString(R.string.Respuesta), Toast.LENGTH_SHORT).show();
+                db.close();
                 nombres.setText("");
                 telefono.setText("");
                 notas.setText("");
                 nombres.requestFocus();
-                db.close();
+
             } catch (Exception exception) {
                 Toast.makeText(this, getString(R.string.ErrorResp), Toast.LENGTH_SHORT).show();
             }
