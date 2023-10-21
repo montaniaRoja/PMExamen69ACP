@@ -156,12 +156,23 @@
         android:id="@+id/btnCountry"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="10dp"
         android:background="#E39393"
         android:text="+ Pais"
         app:layout_constraintBottom_toTopOf="@+id/countrySelect"
         app:layout_constraintEnd_toEndOf="@+id/countrySelect"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
+
+    <ImageButton
+        android:id="@+id/btnPhoto"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/countrySelect"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

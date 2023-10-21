@@ -21,10 +21,15 @@ public class Transacciones
     public static final String id_pais = "id_pais";
     public static final String pais = "pais";
 
+    public static final String foto= "foto";
+
     // Consultas de Base de datos
     //ddl
-    public static final String CreateTablePersonas = "CREATE TABLE personas "+
-            "( id INTEGER PRIMARY KEY AUTOINCREMENT, nombres TEXT, telefono TEXT, notas TEXT, pais TEXT)";
+
+
+    public static final String CreateTablePersonas = "CREATE TABLE personas " +
+            "( id INTEGER PRIMARY KEY AUTOINCREMENT, nombres TEXT, telefono TEXT, notas TEXT, pais TEXT, foto BLOB)";
+
 
     public static final String DropTablePersonas  = "DROP TABLE IF EXISTS personas";
 

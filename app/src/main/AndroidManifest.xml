@@ -2,6 +2,44 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <queries>
+
+        <!-- Browser -->
+
+        <intent>
+
+            <action android:name="android.intent.action.VIEW" />
+
+            <data android:scheme="http" />
+
+        </intent>
+
+            <!-- Camera -->
+
+        <intent>
+
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+
+        </intent>
+        <!-- Gallery -->
+
+        <intent>
+
+            <action android:name="android.intent.action.GET_CONTENT" />
+
+        </intent>
+
+    </queries>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"

@@ -46,11 +46,9 @@ public class MainActivity2 extends AppCompatActivity {
         btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Aquí debes obtener el ID del contacto seleccionado
-                // Puedes obtenerlo de la lista o interfaz de usuario
+
                 int selectedContactId = obtenerIDContactoSeleccionado();
 
-                // Llama a la función para eliminar el contacto
                 eliminarContacto(selectedContactId);
             }
         });
@@ -109,7 +107,7 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     private void compartirContacto(String selectedContact) {
-        // Aquí puedes definir el formato de cómo deseas compartir la información del contacto.
+
         String contenidoParaCompartir = "Contacto seleccionado: " + selectedContact;
 
         Intent intent = new Intent(Intent.ACTION_SEND);
@@ -128,20 +126,20 @@ public class MainActivity2 extends AppCompatActivity {
         builder.setPositiveButton("Llamar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Obtiene el número de teléfono de selectedContact
-                String[] parts = selectedContact.split("\\*\\*");  // Usamos "\\*\\*" como separador
+
+                String[] parts = selectedContact.split("\\*\\*");
                 if (parts.length >= 2) {
                     String telefono = parts[1].trim();
                     // Inicia la llamada
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + telefono));
                     startActivity(intent);
                 } else {
-                    // Aquí puedes manejar un error si el formato de selectedContact no es el esperado
+
                 }
             }
         });
 
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Otra Accion", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

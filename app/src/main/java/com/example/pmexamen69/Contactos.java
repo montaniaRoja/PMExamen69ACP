@@ -6,14 +6,16 @@ public class Contactos {
     private String nombres;
     private String telefono;
     private String pais;
+    private byte[] foto;
 
     private String nota;
 
-    public Contactos(Integer id, String nombres, String telefono, String pais){
+    public Contactos(Integer id, String nombres, String telefono, String pais, byte foto[]){
         this.id=id;
         this.nombres=nombres;
         this.telefono=telefono;
         this.pais=pais;
+        this.foto=foto;
 
     }
 
